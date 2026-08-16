@@ -42,14 +42,26 @@ public class Restaurante {
 
     public static int lerCodigoPrato(Scanner scanner) {
 
-        System.out.println("Digite o código do prato:");
+        int codigo;
 
-        while (!scanner.hasNextInt()) {
-            System.out.println("Entrada inválida. Digite um número de 1 a 5:");
-            scanner.next();
+        while (true) {
+
+            System.out.println("Digite o código do prato:");
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("Entrada inválida. Digite um número de 1 a 5:");
+                scanner.next();
+                continue;
+            }
+
+            codigo = scanner.nextInt();
+
+            if (codigo >= 1 && codigo <= 5) {
+                return codigo;
+            }
+
+            System.out.println("Código inválido. Digite um número de 1 a 5.");
         }
-
-        return scanner.nextInt();
     }
 
     public static double obterPrecoPrato(int codigo) {
