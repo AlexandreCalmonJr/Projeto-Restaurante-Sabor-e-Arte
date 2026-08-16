@@ -16,7 +16,25 @@ public class Restaurante {
         System.out.println("Digite o código do prato:");
         int codigo = scanner.nextInt();
 
-
+        switch (codigo) {
+            case 1:
+                System.out.println("Você escolheu Picanha");
+                break;
+            case 2:
+                System.out.println("Você escolheu Lasanha");
+                break;
+            case 3:
+                System.out.println("Você escolheu Strogonoff");
+                break;
+            case 4:
+                System.out.println("Você escolheu Bife acebolado");
+                break;
+            case 5:
+                System.out.println("Você escolheu Pão com ovo ");
+                break;
+            default:
+                System.out.println("Codigo Invalido");
+        }
 
 
     }
