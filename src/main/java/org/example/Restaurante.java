@@ -15,27 +15,32 @@ public class Restaurante {
 
         System.out.println("Digite o código do prato:");
         int codigo = scanner.nextInt();
+        double total = 0;
 
         switch (codigo) {
             case 1:
                 System.out.println("Você escolheu Picanha");
+                total += 25;
                 break;
             case 2:
                 System.out.println("Você escolheu Lasanha");
+                total += 20;
                 break;
             case 3:
                 System.out.println("Você escolheu Strogonoff");
+                total += 18;
                 break;
             case 4:
                 System.out.println("Você escolheu Bife acebolado");
+                total += 15;
                 break;
             case 5:
                 System.out.println("Você escolheu Pão com ovo ");
+                total += 5;
                 break;
             default:
                 System.out.println("Codigo Invalido");
         }
-
-
+        System.out.printf("Total da comanda: R$ %.2f%n", total);
     }
 }
