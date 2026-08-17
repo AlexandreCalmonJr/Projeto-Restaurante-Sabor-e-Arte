@@ -9,6 +9,11 @@ public class Censo {
         Scanner scanner = new Scanner(System.in);
 
         int opcao;
+        int quantidadePessoas = 0;
+        double somaSalarios = 0;
+        int maiorIdade = 0;
+        int menorIdade = 0;
+        int mulheresSalario5000 = 0;
 
         do {
 
@@ -25,11 +30,40 @@ public class Censo {
                     char sexo = lerSexo(scanner);
                     double salario = lerSalario(scanner);
 
+                    // A primeira pessoa cadastrada define
+                    // inicialmente a maior e a menor idade.
+                    if (quantidadePessoas == 0) {
+                        maiorIdade = idade;
+                        menorIdade = idade;
+                    } else {
+
+                        if (idade > maiorIdade) {
+                            maiorIdade = idade;
+                        }
+
+                        if (idade < menorIdade) {
+                            menorIdade = idade;
+                        }
+                    }
+
+                    somaSalarios += salario;
+                    quantidadePessoas++;
+
+                    if (sexo == 'F' && salario >= 5000) {
+                        mulheresSalario5000++;
+                    }
+
                     System.out.println("Pessoa cadastrada com sucesso!\n");
                     break;
 
                 case 2:
-                    System.out.println("\nExibir resultados\n");
+                    exibirResultados(
+                            quantidadePessoas,
+                            somaSalarios,
+                            maiorIdade,
+                            menorIdade,
+                            mulheresSalario5000
+                    );
                     break;
 
                 case 3:
@@ -81,5 +115,28 @@ public class Censo {
         System.out.print("Digite o salário: R$ ");
 
         return scanner.nextDouble();
+    }
+
+    public static void exibirResultados(
+            int quantidadePessoas,
+            double somaSalarios,
+            int maiorIdade,
+            int menorIdade,
+            int mulheresSalario5000
+    ) {
+        System.out.println("\n===== RESULTADOS DO CENSO =====");
+
+        if (quantidadePessoas == 0) {
+            System.out.println("Nenhuma pessoa cadastrada ainda.\n");
+            return;
+        }
+
+        double mediaSalarial = somaSalarios / quantidadePessoas;
+
+        System.out.printf("Média salarial: R$ %.2f%n", mediaSalarial);
+        System.out.println("Maior idade registrada: " + maiorIdade);
+        System.out.println("Menor idade registrada: " + menorIdade);
+        System.out.println("Mulheres com salário >= R$ 5.000,00: " + mulheresSalario5000);
+        System.out.println();
     }
 }
