@@ -96,25 +96,52 @@ public class Censo {
 
     public static int lerIdade(Scanner scanner) {
 
-        System.out.print("Digite a idade: ");
+        int idade;
 
-        return scanner.nextInt();
+        do {
+            System.out.print("Digite a idade: ");
+            idade = scanner.nextInt();
+
+            if (idade <= 0) {
+                System.out.println("Idade inválida! Digite um valor maior que zero.");
+            }
+        } while (idade <= 0);
+
+        return idade;
     }
 
     public static char lerSexo(Scanner scanner) {
 
-        System.out.print("Digite o sexo (M/F): ");
+        char sexo;
 
-        return scanner.next()
-                .toUpperCase()
-                .charAt(0);
+        do {
+            System.out.print("Digite o sexo (M/F): ");
+            sexo = scanner.next()
+                    .toUpperCase()
+                    .charAt(0);
+
+            if (sexo != 'M' && sexo != 'F') {
+                System.out.println("Sexo inválido! Digite apenas 'M' ou 'F'.");
+            }
+        } while (sexo != 'M' && sexo != 'F');
+
+        return sexo;
     }
 
     public static double lerSalario(Scanner scanner) {
 
-        System.out.print("Digite o salário: R$ ");
+        double salario;
 
-        return scanner.nextDouble();
+        do {
+            System.out.print("Digite o salário: R$ ");
+            salario = scanner.nextDouble();
+
+            if (salario < 0) {
+                System.out.println("Salário inválido! O valor não pode ser negativo.");
+            }
+        } while (salario < 0);
+
+        return salario;
     }
 
     public static void exibirResultados(
