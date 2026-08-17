@@ -1,17 +1,51 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("=========================================");
+            System.out.println("          PAINEL DE SISTEMAS             ");
+            System.out.println("=========================================");
+            System.out.println("1 - Sistema Restaurante (Sabor e Arte)");
+            System.out.println("2 - Sistema Censo Socioeconômico");
+            System.out.println("3 - Sair do programa");
+            System.out.print("Escolha uma opção: ");
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("Opção inválida! Digite 1, 2 ou 3:");
+                scanner.next();
+            }
+
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("\n>>> Iniciando Restaurante Sabor e Arte <<<\n");
+                    Restaurante.executar(scanner);
+                    break;
+
+                case 2:
+                    System.out.println("\n>>> Iniciando Censo Socioeconômico <<<\n");
+                    Censo.executar(scanner);
+                    break;
+
+                case 3:
+                    System.out.println("\nEncerrando o painel de sistemas. Até logo!");
+                    break;
+
+                default:
+                    System.out.println("\nOpção inválida! Escolha 1, 2 ou 3.\n");
+            }
+
+        } while (opcao != 3);
+
+        scanner.close();
     }
 }

@@ -8,6 +8,13 @@ public class Censo {
 
         Scanner scanner = new Scanner(System.in);
 
+        executar(scanner);
+
+        scanner.close();
+    }
+
+    public static void executar(Scanner scanner) {
+
         int opcao;
         int quantidadePessoas = 0;
         double somaSalarios = 0;
@@ -67,7 +74,7 @@ public class Censo {
                     break;
 
                 case 3:
-                    System.out.println("Encerrando o programa...");
+                    System.out.println("\nRetornando ao menu principal...\n");
                     break;
 
                 default:
@@ -75,8 +82,6 @@ public class Censo {
             }
 
         } while (opcao != 3);
-
-        scanner.close();
     }
 
     public static void exibirMenu() {

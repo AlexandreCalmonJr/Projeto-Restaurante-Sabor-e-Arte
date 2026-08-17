@@ -4,9 +4,16 @@ import java.util.Scanner;
 
 public class Restaurante {
 
-    public static void main() {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+
+        executar(scanner);
+
+        scanner.close();
+    }
+
+    public static void executar(Scanner scanner) {
 
         double total = 0;
         char continuar;
@@ -25,9 +32,7 @@ public class Restaurante {
 
         } while (continuar == 'S');
 
-        System.out.printf("Total da comanda: R$ %.2f%n", total);
-
-        scanner.close();
+        System.out.printf("%nTotal da comanda: R$ %.2f%n%n", total);
     }
 
     public static void exibirCardapio() {
