@@ -8,11 +8,78 @@ public class Censo {
 
         Scanner scanner = new Scanner(System.in);
 
+        int opcao;
+
+        do {
+
+            exibirMenu();
+
+            opcao = lerOpcao(scanner);
+
+            switch (opcao) {
+
+                case 1:
+                    System.out.println("\n--- Cadastro de pessoa ---");
+
+                    int idade = lerIdade(scanner);
+                    char sexo = lerSexo(scanner);
+                    double salario = lerSalario(scanner);
+
+                    System.out.println("Pessoa cadastrada com sucesso!\n");
+                    break;
+
+                case 2:
+                    System.out.println("\nExibir resultados\n");
+                    break;
+
+                case 3:
+                    System.out.println("Encerrando o programa...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.\n");
+            }
+
+        } while (opcao != 3);
+
+        scanner.close();
+    }
+
+    public static void exibirMenu() {
+
         System.out.println("===== CENSO SOCIOECONÔMICO =====");
         System.out.println("1 - Adicionar pessoa");
         System.out.println("2 - Exibir resultados");
         System.out.println("3 - Sair");
-
-        scanner.close();
     }
-}
+
+    public static int lerOpcao(Scanner scanner) {
+
+        System.out.print("Escolha uma opção: ");
+
+        return scanner.nextInt();
+    }
+
+    public static int lerIdade(Scanner scanner) {
+
+        System.out.print("Digite a idade: ");
+
+        return scanner.nextInt();
+    }
+
+    public static char lerSexo(Scanner scanner) {
+
+        System.out.print("Digite o sexo (M/F): ");
+
+        return scanner.next()
+                .toUpperCase()
+                .charAt(0);
+    }
+
+    public static double lerSalario(Scanner scanner) {
+
+        System.out.print("Digite o salário: R$ ");
+
+        return scanner.nextDouble();
+    }
+}
